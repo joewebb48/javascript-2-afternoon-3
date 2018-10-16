@@ -27,7 +27,10 @@
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// Code Here 
+function first(arr, cb){
+  cb(arr[0])
+
+}
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -48,6 +51,9 @@ first(names, function(firstName){
 */
 
 //Code Here
+function last(arr, cb){
+  cb(arr[arr.length - 1])
+}
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -66,6 +72,9 @@ last(names, function(lastName){
 */
 
 //Code Here
+function multiply(num1, num2, cb){
+  cb(num1 * num2)
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -85,6 +94,13 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
+function contains(arr, name, cb){
+  if(arr.includes(name)){
+    cb(true)
+  }else{
+    cb(false)
+  }
+}
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -106,6 +122,17 @@ contains(names, 'Colt', function(result){
 */
 
 //Code Here
+function uniq(arr, cb) {
+
+  for( var i = arr.length -1; i>=0;i--){
+    if(arr.indexOf(arr[i]) !== i){
+      arr.splice(i, 1);
+    }
+  }
+  cb(arr);
+}
+
+  
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
@@ -123,6 +150,12 @@ uniq(names, function(uniqArr){
 */
 
 //Code Here 
+function each(arr, cb){
+  for(var i = 0; i< arr.length; i++){
+    cb(arr[i], i)
+  }
+  
+}
 
 // Do not edit the code below.
 each(names, function(item, indice){
@@ -140,6 +173,13 @@ each(names, function(item, indice){
 */
 
 // Code here
+function getUserById(arr, id, cb){
+  for(var i = 0; i< arr.length; i++){
+    if(id === arr[i].id){
+      return cb(arr[i])
+    }
+  }
+}
 
 // Do not edit the code below.
 var users = [
