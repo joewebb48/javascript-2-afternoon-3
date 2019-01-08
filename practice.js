@@ -27,21 +27,19 @@
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-function first(arr, cb){
-  cb(arr[0])
-
+// Code Here
+function first(arr, cb) {
+  cb(arr[0]);
 }
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
-first(names, function(firstName){
+first(names, function(firstName) {
   console.log('The first name in names is ' + firstName);
   return firstName;
 });
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 2 //////////
 
@@ -51,18 +49,16 @@ first(names, function(firstName){
 */
 
 //Code Here
-function last(arr, cb){
-  cb(arr[arr.length - 1])
+function last(arr, cb) {
+  cb(arr[arr.length - 1]);
 }
 
 // Do not edit the code below.
-last(names, function(lastName){
+last(names, function(lastName) {
   console.log('The last name in names is ' + lastName);
   return lastName;
 });
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 3 //////////
 
@@ -72,17 +68,15 @@ last(names, function(lastName){
 */
 
 //Code Here
-function multiply(num1, num2, cb){
-  cb(num1 * num2)
+function multiply(num1, num2, cb) {
+  cb(num1 * num2);
 }
 
 // Do not edit the code below.
-multiply(4, 3, function(answer){
+multiply(4, 3, function(answer) {
   console.log('The answer is ' + answer); //should console.log 12
 });
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 4 //////////
 
@@ -93,26 +87,24 @@ multiply(4, 3, function(answer){
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-//Code Here 
-function contains(arr, name, cb){
-  if(arr.includes(name)){
-    cb(true)
-  }else{
-    cb(false)
+//Code Here
+function contains(arr, name, cb) {
+  if (arr.includes(name, arr[0])) {
+    return cb(true);
+  } else {
+    cb(false);
   }
 }
 
 // Do not edit the code below.
-contains(names, 'Colt', function(result){
-  if(result === true){
+contains(names, 'Colt', function(result) {
+  if (result === true) {
     console.log('Colt is in the array');
   } else {
     console.log('Colt is not in the array');
   }
 });
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 5 //////////
 
@@ -122,25 +114,25 @@ contains(names, 'Colt', function(result){
 */
 
 //Code Here
-function uniq(arr, cb) {
-
-  for( var i = arr.length -1; i>=0;i--){
-    if(arr.indexOf(arr[i]) !== i){
-      arr.splice(i, 1);
+function uniq(names, cb) {
+  for (var i = 0; i < names.length; i++) {
+    for (var j = i + 1; j < names.length; j++) {
+      if (names[i] === names[j]) {
+        names.splice(j, 1);
+      }
     }
   }
-  cb(arr);
+  cb(names);
 }
 
-  
-
 // Do not edit the code below.
-uniq(names, function(uniqArr){
-  console.log('The new names array with all the duplicate items removed is ', uniqArr);
+uniq(names, function(uniqArr) {
+  console.log(
+    'The new names array with all the duplicate items removed is ',
+    uniqArr
+  );
 });
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 6 //////////
 
@@ -149,21 +141,19 @@ uniq(names, function(uniqArr){
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-//Code Here 
-function each(arr, cb){
-  for(var i = 0; i< arr.length; i++){
-    cb(arr[i], i)
+//Code Here
+function each(names, cb) {
+  for (var i = 0; i < names.length; i++) {
+    cb(names[i]);
   }
-  
+  return names;
 }
 
 // Do not edit the code below.
-each(names, function(item, indice){
-  console.log('The item in the ' + indice + ' position is ' + item)
+each(names, function(item, indice) {
+  console.log('The item in the ' + indice + ' position is ' + item);
 });
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 7 //////////
 
@@ -173,10 +163,10 @@ each(names, function(item, indice){
 */
 
 // Code here
-function getUserById(arr, id, cb){
-  for(var i = 0; i< arr.length; i++){
-    if(id === arr[i].id){
-      return cb(arr[i])
+function getUserById(users, id, cb) {
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].id === id) {
+      return cb(users[i]);
     }
   }
 }
@@ -200,10 +190,17 @@ var users = [
     email: 'ryan@gmail.com',
     name: 'Ryan',
     address: '192 East 32 North'
-  },
+  }
 ];
 
-getUserById(users, '16t', function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
+getUserById(users, '16t', function(user) {
+  console.log(
+    'The user with the id 16t has the email of ' +
+      user.email +
+      ' the name of ' +
+      user.name +
+      ' and the address of ' +
+      user.address
+  );
 });
 // Do not edit the code above.
